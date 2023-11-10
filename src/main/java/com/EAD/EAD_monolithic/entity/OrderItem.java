@@ -1,5 +1,6 @@
 package com.EAD.EAD_monolithic.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -23,18 +24,20 @@ public class OrderItem {
             sequenceName = "orderItem_sequence",
             allocationSize = 1
     )
-    private int orderItemId;
+    private Integer orderItemId;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "order_id")
-    @JsonIgnore
+    @JoinColumn(name = "order_id", nullable = false)
+    @JsonBackReference
     private Order order;
 
-    @Column(name = "item_id", nullable = false)
-    private int itemId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "item_id", nullable = false)
+    @JsonBackReference
+    private Inventory inventory;
 
     @Column(name = "quantity", nullable = false)
-    private int quantity;
+    private Integer quantity;
 
     @Column(name = "unit_price", nullable = false)
     private Double unitPrice;

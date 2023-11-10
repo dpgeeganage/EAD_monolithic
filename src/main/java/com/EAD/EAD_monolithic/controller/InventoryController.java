@@ -1,7 +1,7 @@
 package com.EAD.EAD_monolithic.controller;
 
-import com.EAD.EAD_monolithic.dto.ProductDTO;
-import com.EAD.EAD_monolithic.service.ProductService;
+import com.EAD.EAD_monolithic.dto.InventoryDTO;
+import com.EAD.EAD_monolithic.service.InventoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,33 +10,33 @@ import java.util.List;
 @RestController
 @RequestMapping("api/v1/product")
 @CrossOrigin
-public class ProductControllers {
+public class InventoryController {
 
     @Autowired
-    private ProductService productService;
+    private InventoryService productService;
 
     @GetMapping("/getProducts")
-    public List<ProductDTO> getProducts() {
+    public List<InventoryDTO> getProducts() {
         return productService.getAllProducts();
     }
 
     @PostMapping("/saveProduct")
-    public ProductDTO saveProduct(@RequestBody ProductDTO productDTO) {
+    public InventoryDTO saveProduct(@RequestBody InventoryDTO productDTO) {
         return productService.saveProduct(productDTO);
     }
 
     @PutMapping("updateProduct")
-    public ProductDTO updateProduct(@RequestBody ProductDTO productDTO){
+    public InventoryDTO updateProduct(@RequestBody InventoryDTO productDTO){
         return productService.saveProduct(productDTO);
     }
 
     @DeleteMapping("/deleteProduct")
-    public boolean deleteProduct(@RequestBody ProductDTO productDTO){
+    public boolean deleteProduct(@RequestBody InventoryDTO productDTO){
         return productService.deleteProduct(productDTO);
     }
 
     @GetMapping("/getSingleProduct/{id}")
-    public ProductDTO getProductByProductId(@PathVariable int id){
+    public InventoryDTO getProductByProductId(@PathVariable int id){
         return productService.getProductByProductID(id);
     }
 }

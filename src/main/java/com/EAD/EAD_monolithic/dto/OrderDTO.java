@@ -12,8 +12,8 @@ import java.util.List;
 @AllArgsConstructor
 @Data
 public class OrderDTO {
-    private int orderId;
-    private int userId;
+    private Integer orderId;
+    private Integer userId;
     private Double totalPrice;
     private Boolean isPrepared;
     private List<OrderItem> orderItems;

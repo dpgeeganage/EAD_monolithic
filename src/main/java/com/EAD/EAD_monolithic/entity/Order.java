@@ -1,6 +1,7 @@
 package com.EAD.EAD_monolithic.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -24,10 +25,10 @@ public class Order {
             sequenceName = "order_sequence",
             allocationSize = 1
     )
-    private int orderId;
+    private Integer orderId;
 
     @Column(name = "user_id", nullable = false)
-    private int userId;
+    private Integer userId;
 
     @Column(name = "total_price", nullable = false)
     private Double totalPrice;
@@ -35,6 +36,9 @@ public class Order {
     @Column(name = "is_prepared", nullable = false)
     private Boolean isPrepared;
 
+
+
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
     private List<OrderItem> orderItems;
 }
