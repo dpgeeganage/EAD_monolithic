@@ -1,21 +1,22 @@
-package com.EAD.EAD_monolithic.auth;
+package com.EAD.EAD_monolithic.dto;
 
 import com.EAD.EAD_monolithic.entity.Role;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
 @Builder
-@AllArgsConstructor
 @NoArgsConstructor
-public class RegisterRequest {
+@AllArgsConstructor
+public class UserResponseDTO {
+    private Integer userId;
     private String firstName;
     private String lastName;
     private String email;
-    private String password;
     private String deliveryAddress;
     private Role role;
-
 }
